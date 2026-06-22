@@ -1,0 +1,74 @@
+[
+    {
+        "flight_no": "YT-101",
+        "airline": "Yeti Airlines",
+        "from": "Kathmandu",
+        "to": "Pokhara",
+        "dep_time": "06:30",
+        "arr_time": "07:00",
+        "status": "On Time"
+    },
+    {
+        "flight_no": "YT-102",
+        "airline": "Yeti Airlines",
+        "from": "Kathmandu",
+        "to": "Pokhara",
+        "dep_time": "08:00",
+        "arr_time": "08:30",
+        "status": "On Time"
+    },
+    {
+        "flight_no": "BA-201",
+        "airline": "Buddha Air",
+        "from": "Kathmandu",
+        "to": "Pokhara",
+        "dep_time": "07:00",
+        "arr_time": "07:30",
+        "status": "Delayed"
+    },
+    {
+        "flight_no": "BA-202",
+        "airline": "Buddha Air",
+        "from": "Pokhara",
+        "to": "Kathmandu",
+        "dep_time": "09:00",
+        "arr_time": "09:30",
+        "status": "On Time"
+    },
+    {
+        "flight_no": "YT-301",
+        "airline": "Yeti Airlines",
+        "from": "Kathmandu",
+        "to": "Lukla",
+        "dep_time": "06:15",
+        "arr_time": "06:45",
+        "status": "Cancelled"
+    },
+    {
+        "flight_no": "SA-401",
+        "airline": "Shree Airlines",
+        "from": "Kathmandu",
+        "to": "Lukla",
+        "dep_time": "07:30",
+        "arr_time": "08:00",
+        "status": "On Time"
+    },
+    {
+        "flight_no": "SA-402",
+        "airline": "Shree Airlines",
+        "from": "Kathmandu",
+        "to": "Bharatpur",
+        "dep_time": "08:00",
+        "arr_time": "08:25",
+        "status": "On Time"
+    },
+    {
+        "flight_no": "BA-501",
+        "airline": "Buddha Air",
+        "from": "Kathmandu",
+        "to": "Bharatpur",
+        "dep_time": "10:00",
+        "arr_time": "10:25",
+        "status": "On Time"
+    }
+]

@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import os
+import json
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -31,6 +32,13 @@ def load_attractions():
 
 attractions_db = load_attractions()
 
+# Load flights data
+def load_flights():
+    with open("data/flights.json", "r") as f:
+        return json.load(f)
+
+flights_db = load_flights()
+
 # Weather function
 def get_weather(city):
     api_key = os.getenv("OPENWEATHER_API_KEY")
@@ -45,7 +53,6 @@ def get_weather(city):
 
 # Search attractions
 def search_attractions(query):
-    # Clean the query
     query = query.lower().strip().replace("?", "").replace(".", "").replace("!", "")
     
     results = []
@@ -54,7 +61,6 @@ def search_attractions(query):
         location = a.get("location", "").lower()
         desc = a.get("description", "").lower()
         
-        # Check each word in query
         query_words = query.split()
         for word in query_words:
             if word in name or word in location or word in desc:
@@ -64,7 +70,6 @@ def search_attractions(query):
     if not results:
         return "No attractions found. Try searching for 'temples', 'Pokhara', or 'stupa'."
     
-    # If only one result, return detailed info
     if len(results) == 1:
         r = results[0]
         reply = f"**{r.get('name', 'Unknown')}**\n\n"
@@ -75,7 +80,6 @@ def search_attractions(query):
         reply += f"💡 Tip: {r.get('tip', '')}"
         return reply
     
-    # Multiple results
     reply = f"Found {len(results)} places:\n\n"
     for r in results[:5]:
         reply += f"**{r.get('name', 'Unknown')}**\n"
@@ -83,8 +87,31 @@ def search_attractions(query):
         reply += f"📝 {r.get('description', '')[:100]}...\n\n"
     return reply
 
+# Search flights
+def search_flights(from_city=None, to_city=None):
+    results = []
+    for f in flights_db:
+        match_from = not from_city or from_city.lower() in f["from"].lower()
+        match_to = not to_city or to_city.lower() in f["to"].lower()
+        if match_from and match_to:
+            results.append(f)
+    
+    if not results:
+        return "No flights found for that route."
+    
+    reply = f"✈️ **Flights found:**\n\n"
+    for f in results:
+        status_emoji = "✅" if f["status"] == "On Time" else "⚠️" if f["status"] == "Delayed" else "❌"
+        reply += f"{status_emoji} **{f['flight_no']}** - {f['airline']}\n"
+        reply += f"   {f['from']} → {f['to']}\n"
+        reply += f"   Depart: {f['dep_time']} | Arrive: {f['arr_time']}\n"
+        reply += f"   Status: {f['status']}\n\n"
+    
+    reply += "⚠️ *Mountain flights are weather dependent. Always confirm with your airline.*"
+    return reply
+
 st.title("🇳🇵 Nepal Travel AI Assistant")
-st.caption("Ask me about weather, attractions, and more!")
+st.caption("Ask me about weather, attractions, flights, and more!")
 
 # Sidebar
 with st.sidebar:
@@ -107,13 +134,19 @@ with st.sidebar:
         st.session_state.messages.append({"role": "assistant", "content": reply})
         st.rerun()
     
+    if st.button("✈️ Flights to Pokhara"):
+        reply = search_flights(to_city="Pokhara")
+        st.session_state.messages.append({"role": "user", "content": "Flights to Pokhara?"})
+        st.session_state.messages.append({"role": "assistant", "content": reply})
+        st.rerun()
+    
     st.divider()
-    st.caption("Try: 'weather in Pokhara' or 'tell me about temples'")
+    st.caption("Try: 'weather in Pokhara', 'tell me about temples', or 'flights to Lukla'")
 
 # Chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Namaste! 🙏 I'm your Nepal travel guide.\n\nI can help with:\n🌤️ Real-time weather\n📍 Tourist attractions\n💬 General Nepal questions\n\nWhat would you like to know?"}
+        {"role": "assistant", "content": "Namaste! 🙏 I'm your Nepal travel guide.\n\nI can help with:\n🌤️ Real-time weather\n📍 Tourist attractions\n✈️ Domestic flights\n💬 General Nepal questions\n\nWhat would you like to know?"}
     ]
 
 for message in st.session_state.messages:
@@ -141,6 +174,19 @@ if prompt := st.chat_input("Ask me anything about traveling in Nepal..."):
                 else:
                     reply = get_weather("Kathmandu")
             
+            # Check for flight requests
+            elif any(word in prompt_lower for word in ["flight", "fly", "plane", "airline"]):
+                if "pokhara" in prompt_lower:
+                    reply = search_flights(to_city="Pokhara")
+                elif "lukla" in prompt_lower:
+                    reply = search_flights(to_city="Lukla")
+                elif "bharatpur" in prompt_lower or "chitwan" in prompt_lower:
+                    reply = search_flights(to_city="Bharatpur")
+                elif "kathmandu" in prompt_lower:
+                    reply = search_flights(to_city="Kathmandu")
+                else:
+                    reply = search_flights()
+            
             # Check for attraction requests
             elif any(word in prompt_lower for word in ["attraction", "temple", "stupa", "visit", "place", "park", "monkey", "buddha", "durbar", "square", "chitwan", "pokhara", "boudha", "pashupati", "swayambhu", "lumbini"]):
                 clean_prompt = prompt_lower.replace("tell me about", "").replace("what is", "").replace("what's", "").replace("show me", "").strip()
@@ -154,15 +200,18 @@ if prompt := st.chat_input("Ask me anything about traveling in Nepal..."):
                         json={
                             "model": "llama3.1:8b",
                             "messages": [
-                                {"role": "system", "content": "You are a helpful Nepal travel assistant. You know about Nepali culture, food, trekking, festivals, transportation, and travel tips. Keep answers concise (2-4 sentences) and friendly."},
+                                {"role": "system", "content": "You are a Nepal travel assistant. Answer in 1-3 short sentences only. Be direct and brief."},
                                 {"role": "user", "content": prompt}
                             ],
-                            "stream": False
+                            "stream": False,
+                            "options": {
+                                "num_predict": 100
+                            }
                         }
                     )
                     reply = response.json()['message']['content']
                 except:
-                    reply = "Sorry, I'm having trouble connecting to my knowledge base. Try asking about weather or attractions!"
+                    reply = "Sorry, I'm having trouble connecting to my knowledge base. Try asking about weather, flights, or attractions!"
             
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
