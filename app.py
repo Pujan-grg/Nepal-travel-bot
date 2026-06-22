@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import os
 import json
+import random
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -10,6 +11,18 @@ st.set_page_config(
     page_title="Nepal Travel Assistant",
     page_icon="🏔️"
 )
+
+# Custom CSS for Nepal theme
+st.markdown("""
+<style>
+    .stApp {
+        background: linear-gradient(to bottom, #f0f4f8, #e8edf2);
+    }
+    .stChatMessage {
+        border-radius: 10px;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 # Load attractions data
 def load_attractions():
@@ -38,23 +51,6 @@ def load_flights():
         return json.load(f)
 
 flights_db = load_flights()
-
-# Nepal travel tips
-def get_travel_tip():
-    import random
-    tips = [
-        "💡 Always carry cash. ATMs are limited outside Kathmandu and Pokhara.",
-        "💡 Learn 'Namaste' - the traditional greeting with palms together.",
-        "💡 Remove shoes before entering temples and homes.",
-        "💡 Walk clockwise around Buddhist stupas and temples.",
-        "💡 Don't drink tap water. Stick to bottled or filtered water.",
-        "💡 Bargaining is common in local markets, but be respectful.",
-        "💡 Dress modestly at religious sites - cover shoulders and knees.",
-        "💡 Get a local SIM card (Ncell or NTC) for internet in remote areas.",
-        "💡 Altitude sickness is real above 3000m. Ascend slowly and stay hydrated.",
-        "💡 Tipping isn't mandatory but appreciated. 10% at restaurants is generous."
-    ]
-    return random.choice(tips)
 
 # Weather function
 def get_weather(city):
@@ -127,6 +123,22 @@ def search_flights(from_city=None, to_city=None):
     reply += "⚠️ *Mountain flights are weather dependent. Always confirm with your airline.*"
     return reply
 
+# Nepal travel tips
+def get_travel_tip():
+    tips = [
+        "💡 Always carry cash. ATMs are limited outside Kathmandu and Pokhara.",
+        "💡 Learn 'Namaste' - the traditional greeting with palms together.",
+        "💡 Remove shoes before entering temples and homes.",
+        "💡 Walk clockwise around Buddhist stupas and temples.",
+        "💡 Don't drink tap water. Stick to bottled or filtered water.",
+        "💡 Bargaining is common in local markets, but be respectful.",
+        "💡 Dress modestly at religious sites - cover shoulders and knees.",
+        "💡 Get a local SIM card (Ncell or NTC) for internet in remote areas.",
+        "💡 Altitude sickness is real above 3000m. Ascend slowly and stay hydrated.",
+        "💡 Tipping isn't mandatory but appreciated. 10% at restaurants is generous."
+    ]
+    return random.choice(tips)
+
 st.title("🇳🇵 Nepal Travel AI Assistant")
 st.caption("Ask me about weather, attractions, flights, and more!")
 
@@ -156,7 +168,7 @@ with st.sidebar:
         st.session_state.messages.append({"role": "user", "content": "Flights to Pokhara?"})
         st.session_state.messages.append({"role": "assistant", "content": reply})
         st.rerun()
-        
+    
     if st.button("💡 Travel Tip"):
         tip = get_travel_tip()
         st.session_state.messages.append({"role": "user", "content": "Give me a travel tip"})
@@ -164,12 +176,12 @@ with st.sidebar:
         st.rerun()
     
     st.divider()
-    st.caption("Try: 'weather in Pokhara', 'tell me about temples', or 'flights to Lukla'")
+    st.caption("Try: 'weather in Pokhara'\n'tell me about temples'\n'flights to Lukla'\n'give me a travel tip'")
 
 # Chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Namaste! 🙏 I'm your Nepal travel guide.\n\nI can help with:\n🌤️ Real-time weather\n📍 Tourist attractions\n✈️ Domestic flights\n💬 General Nepal questions\n\nWhat would you like to know?"}
+        {"role": "assistant", "content": "Namaste! 🙏 I'm your Nepal travel guide.\n\n**I can help with:**\n🌤️ Weather - *'weather in Pokhara'*\n📍 Attractions - *'tell me about monkey temple'*\n✈️ Flights - *'flights to Lukla'*\n💡 Tips - *'give me a travel tip'*\n💬 General - *'best time to visit Nepal'*\n\nWhat would you like to know?"}
     ]
 
 for message in st.session_state.messages:
@@ -186,8 +198,21 @@ if prompt := st.chat_input("Ask me anything about traveling in Nepal..."):
         with st.spinner("Thinking..."):
             prompt_lower = prompt.lower()
             
+            # Handle greetings
+            if prompt_lower in ["hi", "hello", "hey", "namaste"]:
+                replies = [
+                    "Namaste! 🙏 How can I help you explore Nepal?",
+                    "Namaste! Ready for an adventure in Nepal?",
+                    "Hello! Ask me about weather, places, or flights in Nepal!"
+                ]
+                reply = random.choice(replies)
+            
+            # Handle thank you
+            elif prompt_lower in ["thanks", "thank you", "dhanyabad"]:
+                reply = "Dhanyabad! 🙏 Happy to help. Enjoy your Nepal trip! 🏔️"
+            
             # Check for weather requests
-            if "weather" in prompt_lower:
+            elif "weather" in prompt_lower:
                 if "pokhara" in prompt_lower:
                     reply = get_weather("Pokhara")
                 elif "kathmandu" in prompt_lower:
@@ -209,7 +234,7 @@ if prompt := st.chat_input("Ask me anything about traveling in Nepal..."):
                     reply = search_flights(to_city="Kathmandu")
                 else:
                     reply = search_flights()
-                    
+            
             # Check for travel tips
             elif any(word in prompt_lower for word in ["tip", "advice", "recommend"]):
                 reply = get_travel_tip()
