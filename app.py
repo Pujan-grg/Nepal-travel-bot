@@ -39,6 +39,23 @@ def load_flights():
 
 flights_db = load_flights()
 
+# Nepal travel tips
+def get_travel_tip():
+    import random
+    tips = [
+        "💡 Always carry cash. ATMs are limited outside Kathmandu and Pokhara.",
+        "💡 Learn 'Namaste' - the traditional greeting with palms together.",
+        "💡 Remove shoes before entering temples and homes.",
+        "💡 Walk clockwise around Buddhist stupas and temples.",
+        "💡 Don't drink tap water. Stick to bottled or filtered water.",
+        "💡 Bargaining is common in local markets, but be respectful.",
+        "💡 Dress modestly at religious sites - cover shoulders and knees.",
+        "💡 Get a local SIM card (Ncell or NTC) for internet in remote areas.",
+        "💡 Altitude sickness is real above 3000m. Ascend slowly and stay hydrated.",
+        "💡 Tipping isn't mandatory but appreciated. 10% at restaurants is generous."
+    ]
+    return random.choice(tips)
+
 # Weather function
 def get_weather(city):
     api_key = os.getenv("OPENWEATHER_API_KEY")
@@ -139,6 +156,12 @@ with st.sidebar:
         st.session_state.messages.append({"role": "user", "content": "Flights to Pokhara?"})
         st.session_state.messages.append({"role": "assistant", "content": reply})
         st.rerun()
+        
+    if st.button("💡 Travel Tip"):
+        tip = get_travel_tip()
+        st.session_state.messages.append({"role": "user", "content": "Give me a travel tip"})
+        st.session_state.messages.append({"role": "assistant", "content": tip})
+        st.rerun()
     
     st.divider()
     st.caption("Try: 'weather in Pokhara', 'tell me about temples', or 'flights to Lukla'")
@@ -186,6 +209,10 @@ if prompt := st.chat_input("Ask me anything about traveling in Nepal..."):
                     reply = search_flights(to_city="Kathmandu")
                 else:
                     reply = search_flights()
+                    
+            # Check for travel tips
+            elif any(word in prompt_lower for word in ["tip", "advice", "recommend"]):
+                reply = get_travel_tip()
             
             # Check for attraction requests
             elif any(word in prompt_lower for word in ["attraction", "temple", "stupa", "visit", "place", "park", "monkey", "buddha", "durbar", "square", "chitwan", "pokhara", "boudha", "pashupati", "swayambhu", "lumbini"]):

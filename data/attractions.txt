@@ -17,9 +17,9 @@ Tip: Visit rooftop cafes for the best views.
 Name: Pashupatinath Temple
 Location: Kathmandu
 Type: Hindu Temple
-Best Time: Early morning for aarti ceremony
-Entry Fee: NPR 1000 for foreigners (only non-Hindus cannot enter main temple)
-Description: Most sacred Hindu temple in Nepal on the banks of Bagmati River. Dedicated to Lord Shiva.
+Best Time: Early morning or evening aarti
+Entry Fee: NPR 1000 for foreigners
+Description: Most sacred Hindu temple in Nepal on the banks of Bagmati River. Dedicated to Lord Shiva. Non-Hindus cannot enter main temple.
 Tip: Respectful dress required. Observe evening aarti from across the river.
 
 Name: Pokhara Lakeside
@@ -37,3 +37,43 @@ Best Time: October to March
 Entry Fee: NPR 1500 per day for foreigners
 Description: UNESCO World Heritage site. Home to one-horned rhinos, Bengal tigers, elephants. Jungle safaris and canoe rides available.
 Tip: Book a full-day jeep safari for best wildlife spotting.
+
+Name: Lumbini
+Location: Lumbini
+Type: Religious/Historical
+Best Time: October to March
+Entry Fee: NPR 500 for foreigners
+Description: Birthplace of Lord Buddha. UNESCO World Heritage site with ancient ruins, monasteries, and the sacred Maya Devi Temple.
+Tip: Visit early morning when monks are praying for a peaceful experience.
+
+Name: Bhaktapur Durbar Square
+Location: Bhaktapur
+Type: Historical/Square
+Best Time: Morning to avoid crowds
+Entry Fee: NPR 1500 for foreigners
+Description: Ancient royal palace complex with stunning Newari architecture, 55-window palace, and pottery square.
+Tip: Try the famous juju dhau (king yogurt) nearby.
+
+Name: Sarangkot
+Location: Pokhara
+Type: Viewpoint
+Best Time: Sunrise
+Entry Fee: Free (transport extra)
+Description: Famous viewpoint overlooking Pokhara valley and Annapurna mountain range. Popular for paragliding takeoff.
+Tip: Drive up early morning for spectacular sunrise over the Himalayas.
+
+Name: Sagarmatha National Park
+Location: Solukhumbu
+Type: National Park
+Best Time: October to November, March to May
+Entry Fee: NPR 3000 for foreigners
+Description: Home to Mount Everest and other high peaks. UNESCO World Heritage site with unique Sherpa culture and wildlife.
+Tip: Obtain TIMS card and Sagarmatha permit before trekking.
+
+Name: Patan Durbar Square
+Location: Lalitpur
+Type: Historical/Square
+Best Time: Morning or late afternoon
+Entry Fee: NPR 1000 for foreigners
+Description: Ancient royal square known for fine arts, Krishna Mandir, and traditional metalwork. Part of Kathmandu Valley UNESCO site.
+Tip: Visit the Patan Museum inside the square for Newari art and history.
