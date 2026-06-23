@@ -1,0 +1,49 @@
+Name: Everest Base Camp Trek
+Duration: 12-14 days
+Difficulty: Hard
+Max Altitude: 5,545m (Kala Patthar)
+Best Season: March-May, September-November
+Permits: TIMS Card, Sagarmatha National Park Permit
+Cost: $1,200-$2,000
+Description: The most famous trek in the world. Fly to Lukla, trek through Sherpa villages, reach Everest Base Camp and Kala Patthar for views of Mount Everest.
+Tip: Spend an extra acclimatization day in Namche Bazaar.
+
+Name: Annapurna Circuit Trek
+Duration: 15-18 days
+Difficulty: Moderate to Hard
+Max Altitude: 5,416m (Thorong La Pass)
+Best Season: March-May, September-November
+Permits: TIMS Card, ACAP Permit
+Cost: $1,000-$1,800
+Description: Classic trek circling the Annapurna massif. Diverse landscapes from subtropical forests to high desert. Cross the famous Thorong La Pass.
+Tip: Take your time ascending to avoid altitude sickness at Thorong La.
+
+Name: Ghorepani Poon Hill Trek
+Duration: 4-5 days
+Difficulty: Easy to Moderate
+Max Altitude: 3,210m (Poon Hill)
+Best Season: March-May, September-December
+Permits: TIMS Card, ACAP Permit
+Cost: $300-$600
+Description: Short and rewarding trek perfect for beginners. Famous for stunning sunrise views over Annapurna and Dhaulagiri ranges from Poon Hill.
+Tip: Wake up at 4:30 AM for the sunrise hike to Poon Hill viewpoint.
+
+Name: Langtang Valley Trek
+Duration: 7-9 days
+Difficulty: Moderate
+Max Altitude: 3,870m (Kyanjin Ri)
+Best Season: March-May, September-November
+Permits: TIMS Card, Langtang National Park Permit
+Cost: $500-$900
+Description: Less crowded trek near Kathmandu. Beautiful valley with Tamang culture, glaciers, and mountain views. Recovering well after 2015 earthquake.
+Tip: Visit the local cheese factory in Kyanjin Gompa.
+
+Name: Manaslu Circuit Trek
+Duration: 14-16 days
+Difficulty: Hard
+Max Altitude: 5,160m (Larkya La Pass)
+Best Season: March-May, September-November
+Permits: Restricted Area Permit, MCAP, ACAP
+Cost: $1,500-$2,500
+Description: Remote and challenging trek around Mount Manaslu (8,163m). Less touristy alternative to Annapurna Circuit with pristine nature and Tibetan culture.
+Tip: Must trek with a registered guide and at least one other trekker.

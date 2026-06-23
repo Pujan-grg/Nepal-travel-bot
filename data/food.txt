@@ -1,0 +1,47 @@
+Name: Dal Bhat
+Type: Main Course
+Vegetarian: Yes (can be vegan)
+Description: Nepal's national dish. Steamed rice served with lentil soup (dal), vegetable curry, pickle (achar), and sometimes papad. Comes with unlimited refills.
+Tip: Try "Dal Bhat Power, 24 Hour" - Nepali saying about this energy-packed meal.
+
+Name: Momo
+Type: Snack/Street Food
+Vegetarian: Available
+Description: Tibetan-origin dumplings filled with meat or vegetables, steamed or fried. Served with spicy tomato-based chutney. Found everywhere from street stalls to restaurants.
+Tip: Try buff (buffalo) momos for authentic local flavor. Best in Kathmandu's backstreets.
+
+Name: Thukpa
+Type: Soup/Noodles
+Vegetarian: Available
+Description: Hearty Tibetan noodle soup with vegetables and meat. Popular in mountain regions and Kathmandu. Perfect warming dish after trekking or in winter.
+Tip: Try Thenthuk (hand-pulled noodle version) for a more authentic experience.
+
+Name: Sel Roti
+Type: Snack/Breakfast
+Vegetarian: Yes
+Description: Ring-shaped sweet rice bread, crispy outside and soft inside. Deep-fried and eaten during festivals especially Tihar and Dashain. Popular breakfast with tea.
+Tip: Best eaten fresh and hot from street vendors during festivals.
+
+Name: Newari Khaja Set
+Type: Platter
+Vegetarian: No
+Description: Traditional Newari snack platter with beaten rice (chiura), spiced buffalo meat, boiled egg, black soybeans, pickle, and aila (local liquor).
+Tip: Visit Kirtipur or Bhaktapur for the most authentic Newari food experience.
+
+Name: Chatamari
+Type: Snack
+Vegetarian: Available
+Description: Newari rice flour crepe topped with minced meat or vegetables and egg. Often called "Nepali pizza". Popular festival food.
+Tip: Eat it fresh off the pan at Newari restaurants in Patan.
+
+Name: Juju Dhau
+Type: Dessert
+Vegetarian: Yes
+Description: "King of Yogurt" from Bhaktapur. Thick, creamy sweet yogurt made from buffalo milk in traditional clay pots. Famous throughout Nepal.
+Tip: The authentic version is only found in Bhaktapur. Try it near Bhaktapur Durbar Square.
+
+Name: Yomari
+Type: Dessert/Snack
+Vegetarian: Yes
+Description: Newari sweet dumpling made from rice flour, filled with molasses and sesame seeds. Eaten during Yomari Punhi festival in December.
+Tip: Find them in Patan and Bhaktapur during winter months.
